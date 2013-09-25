@@ -1,0 +1,8 @@
+{
+  "name": "StrangeLoop-AngularJS",
+  "dependencies": {
+    "gumby": "~2.4.11",
+    "jquery": "~2.0.3",
+    "angular-fire": "~0.3.1"
+  }
+}
