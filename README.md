@@ -28,7 +28,11 @@ A starter AngularJS repository for getting started with AngularJS. Includes help
 
 ### End to End Testing (Protractor)
 
+#### Single run tests
 `grunt test:e2e` 
+
+#### Auto watching tests
+`grunt autotest:e2e`
 
 ### Coverage Testing
 
