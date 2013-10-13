@@ -6,14 +6,20 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-protractor-runner');
+  grunt.loadNpmTasks('grunt-shell-spawn');
 
   grunt.initConfig({
     shell: {
       options: {
         stdout: true
       },
-      protractor: {
-        command: 'node ./node_modules/.bin/protractor ./test/protractor-conf.js'
+      selenium: {
+        command: './selenium/start',
+        options: {
+          stdout: false,
+          async: true
+        }
       },
       protractor_install: {
         command: 'node ./node_modules/protractor/bin/install_selenium_standalone'
@@ -55,6 +61,22 @@ module.exports = function(grunt) {
       }
     },
 
+    protractor: {
+      options: {
+        keepAlive: false,
+        configFile: "./test/protractor.conf.js"
+      },
+      singlerun: {},
+      auto: {
+        keepAlive: true,
+        options: {
+          args: {
+            seleniumPort: 4444
+          }
+        }
+      }
+    },
+
     concat: {
       styles: {
         dest: './app/assets/app.css',
@@ -82,14 +104,14 @@ module.exports = function(grunt) {
       options : {
         livereload: 7777
       },
-      styles: {
-        files: ['app/styles/**/*.css'],
-        tasks: ['concat:styles']
+      assets: {
+        files: ['app/styles/**/*.css','app/scripts/**/*.js'],
+        tasks: ['concat']
       },
-      scripts: {
-        files: ['app/scripts/**/*.js'],
-        tasks: ['concat:scripts']
-      },
+      protractor: {
+        files: ['app/scripts/**/*.js','test/e2e/**/*.js'],
+        tasks: ['protractor:auto']
+      }
     },
 
     open: {
@@ -131,13 +153,16 @@ module.exports = function(grunt) {
   //single run tests
   grunt.registerTask('test', ['test:unit', 'test:e2e']);
   grunt.registerTask('test:unit', ['karma:unit']);
-  grunt.registerTask('test:e2e', ['connect:testserver','shell:protractor']);
-  grunt.registerTask('test:coverage', ['karma:unit_coverage']);
-  grunt.registerTask('coverage', ['karma:unit_coverage','open:coverage','connect:coverage']);
+  grunt.registerTask('test:e2e', ['connect:testserver','protractor:singlerun']);
 
   //autotest and watch tests
   grunt.registerTask('autotest', ['karma:unit_auto']);
   grunt.registerTask('autotest:unit', ['karma:unit_auto']);
+  grunt.registerTask('autotest:e2e', ['connect:testserver','shell:selenium','watch:protractor']);
+
+  //coverage testing
+  grunt.registerTask('test:coverage', ['karma:unit_coverage']);
+  grunt.registerTask('coverage', ['karma:unit_coverage','open:coverage','connect:coverage']);
 
   //installation-related
   grunt.registerTask('install', ['update','shell:protractor_install']);
@@ -147,7 +172,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['dev']);
 
   //development
-  grunt.registerTask('dev', ['update', 'concat', 'connect:devserver', 'open:devserver', 'watch']);
+  grunt.registerTask('dev', ['update', 'concat', 'connect:devserver', 'open:devserver', 'watch:assets']);
 
   //server daemon
   grunt.registerTask('serve', ['connect:webserver']);
