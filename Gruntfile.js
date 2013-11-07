@@ -166,13 +166,13 @@ module.exports = function(grunt) {
 
   //installation-related
   grunt.registerTask('install', ['update','shell:protractor_install']);
-  grunt.registerTask('update', ['shell:npm_install','shell:bower_install']);
+  grunt.registerTask('update', ['shell:npm_install','shell:bower_install', 'concat']);
 
   //defaults
   grunt.registerTask('default', ['dev']);
 
   //development
-  grunt.registerTask('dev', ['update', 'concat', 'connect:devserver', 'open:devserver', 'watch:assets']);
+  grunt.registerTask('dev', ['update', 'connect:devserver', 'open:devserver', 'watch:assets']);
 
   //server daemon
   grunt.registerTask('serve', ['connect:webserver']);
