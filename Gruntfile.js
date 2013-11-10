@@ -91,8 +91,9 @@ module.exports = function(grunt) {
         },
         dest: './app/assets/app.js',
         src: [
-          'lib/angular-1.2.0-rc.2/angular.js',
-          'lib/angular-1.2.0-rc.2/angular-route.js',
+          'lib/angular-1.2.0/angular.js',
+          'lib/angular-1.2.0/angular-route.js',
+          'lib/angular-1.2.0/angular-angular.js',
           'app/scripts/homePages.js',
           'app/scripts/app.js',
           //place your JavaScript files here
