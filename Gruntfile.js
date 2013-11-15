@@ -1,13 +1,6 @@
 module.exports = function(grunt) {
 
-  grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-shell');
-  grunt.loadNpmTasks('grunt-open');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-protractor-runner');
-  grunt.loadNpmTasks('grunt-shell-spawn');
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   grunt.initConfig({
     shell: {
@@ -63,7 +56,7 @@ module.exports = function(grunt) {
 
     protractor: {
       options: {
-        keepAlive: false,
+        keepAlive: true,
         configFile: "./test/protractor.conf.js"
       },
       singlerun: {},
@@ -75,6 +68,16 @@ module.exports = function(grunt) {
           }
         }
       }
+    },
+
+    jshint: {
+      options: {
+        jshintrc: '.jshintrc'
+      },
+      all: [
+        'Gruntfile.js',
+        'app/scripts/{,*/}*.js'
+      ]
     },
 
     concat: {
@@ -152,7 +155,7 @@ module.exports = function(grunt) {
   });
 
   //single run tests
-  grunt.registerTask('test', ['test:unit', 'test:e2e']);
+  grunt.registerTask('test', ['jshint','test:unit', 'test:e2e']);
   grunt.registerTask('test:unit', ['karma:unit']);
   grunt.registerTask('test:e2e', ['connect:testserver','protractor:singlerun']);
 
