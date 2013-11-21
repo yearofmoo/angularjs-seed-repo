@@ -1,9 +1,9 @@
 module.exports = function(config) {
   config.set({
     files : [
-      'lib/angular-1.2.0/angular.js',
-      'lib/angular-1.2.0/angular-route.js',
-      'lib/angular-1.2.0/angular-mocks.js',
+      'bower_components/angular/angular.js',
+      'bower_components/angular-route/angular-route.js',
+      'bower_components/angular-mocks/angular-mocks.js',
       'app/scripts/homePages.js',
       'app/scripts/app.js',
       'test/unit/**/*.js'

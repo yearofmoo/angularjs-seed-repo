@@ -19,10 +19,7 @@ module.exports = function(grunt) {
       },
       npm_install: {
         command: 'npm install'
-      },
-      bower_install: {
-        command: 'node ./node_modules/bower/bin/bower install'
-      },
+      }
     },
 
     connect: {
@@ -94,9 +91,9 @@ module.exports = function(grunt) {
         },
         dest: './app/assets/app.js',
         src: [
-          'lib/angular-1.2.0/angular.js',
-          'lib/angular-1.2.0/angular-route.js',
-          'lib/angular-1.2.0/angular-angular.js',
+          'bower_components/angular/angular.js',
+          'bower_components/angular-route/angular-route.js',
+          'bower_components/angular-animate/angular-animate.js',
           'app/scripts/homePages.js',
           'app/scripts/app.js',
           //place your JavaScript files here
@@ -170,7 +167,7 @@ module.exports = function(grunt) {
 
   //installation-related
   grunt.registerTask('install', ['update','shell:protractor_install']);
-  grunt.registerTask('update', ['shell:npm_install','shell:bower_install', 'concat']);
+  grunt.registerTask('update', ['shell:npm_install', 'concat']);
 
   //defaults
   grunt.registerTask('default', ['dev']);
