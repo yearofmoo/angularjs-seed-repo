@@ -1,10 +1,9 @@
 {
-  "name": "StrangeLoop-AngularJS",
   "dependencies": {
     "jquery": "~2.0.3",
-    "angular": "1.2.1",
-    "angular-route": "1.2.1",
-    "angular-animate": "1.2.1",
-    "angular-mocks": "1.2.1"
+    "angular": "1.2.3",
+    "angular-route": "1.2.3",
+    "angular-animate": "1.2.3",
+    "angular-mocks": "1.2.3"
   }
 }
