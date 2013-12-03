@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "postinstall": "./node_modules/.bin/bower install"
+    "postinstall": "node ./node_modules/.bin/bower install"
   },
   "devDependencies": {
     "matchdep": "~0.1.2",
