@@ -1,5 +1,6 @@
 {
   "name": "yearofmoo-angularjs-seed-repo",
+  "version": "0.0.1",
   "scripts": {
     "postinstall": "node ./node_modules/.bin/bower install"
   },
