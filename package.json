@@ -2,7 +2,7 @@
   "name": "yearofmoo-angularjs-seed-repo",
   "version": "0.0.1",
   "scripts": {
-    "postinstall": "node ./node_modules/.bin/bower install"
+    "postinstall": "node ./node_modules/bower/bin/bower install"
   },
   "devDependencies": {
     "matchdep": "~0.1.2",
