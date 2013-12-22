@@ -15,7 +15,7 @@ module.exports = function(grunt) {
         }
       },
       protractor_install: {
-        command: 'node ./node_modules/protractor/bin/install_selenium_standalone'
+        command: 'node ./node_modules/protractor/bin/webdriver-manager update'
       },
       npm_install: {
         command: 'npm install'
