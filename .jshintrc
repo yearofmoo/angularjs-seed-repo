@@ -21,6 +21,6 @@
         "protractor": false,
         "it": false,
         "beforeEach": false,
-        "expect: false"
+        "expect": false"
     }
 }
