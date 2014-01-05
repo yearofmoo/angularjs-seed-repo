@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         stdout: true
       },
       selenium: {
-        command: './selenium/start',
+        command: 'node ./node_modules/protractor/bin/webdriver-manager start',
         options: {
           stdout: false,
           async: true
