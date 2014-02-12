@@ -81,7 +81,7 @@ module.exports = function(grunt) {
       styles: {
         dest: './app/assets/app.css',
         src: [
-          'app/styles/app.css',
+          'app/styles/app.css'
           //place your Stylesheet files here
         ]
       },
@@ -95,10 +95,10 @@ module.exports = function(grunt) {
           'bower_components/angular-route/angular-route.js',
           'bower_components/angular-animate/angular-animate.js',
           'app/scripts/homePages.js',
-          'app/scripts/app.js',
+          'app/scripts/app.js'
           //place your JavaScript files here
         ]
-      },
+      }
     },
 
     watch: {
@@ -147,7 +147,7 @@ module.exports = function(grunt) {
           type : 'html',
           dir : 'coverage/'
         }
-      },
+      }
     }
   });
 
