@@ -1,0 +1,10 @@
+<div style="background: green;
+            padding-bottom: 20px;
+            color: white;">
+    <h2>stateful-component</h2>
+    <pre>{{$ctrl.user | json}}</pre>
+    <stateless-component 
+        user="$ctrl.user"
+        on-update="$ctrl.userUpdate($event)">
+    </stateless-component>
+</div>
