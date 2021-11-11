@@ -1,10 +1,14 @@
-angular.module('myApp', ['ngRoute', 'app.homePages'])
+angular.module('myApp', ['ngRoute', 'todos', 'auth'])
 
   .constant('TPL_PATH', '/templates')
 
   .config(function ($routeProvider, TPL_PATH) {
-    $routeProvider.when('/', {
-      controller: 'ToDoListCtrl',
-      templateUrl: TPL_PATH + '/home.html'
-    });
+    $routeProvider
+      .when('/', {
+        templateUrl: TPL_PATH + '/login.html'
+      })
+      .when('/home', {
+        templateUrl: TPL_PATH + '/home.html'
+      })
   });
+

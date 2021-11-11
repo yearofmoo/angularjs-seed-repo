@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-ng-app="myApp">
+<html>
 
 <head>
   <title>Yearofmoo AngularJS Seed Repo</title>
@@ -8,59 +8,16 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
-<body ng-controller="ToDoListCtrl">
-  <div class="container">
-    <div class="page-header">
-      <h1>{{data.user}}, cегодня у тебя {{data.toDo.length}} дел</h1>
-    </div>
-
-    <div class="panel">
-      <div class="input-group">
-        <form ng-submit="addNewToDo()">
-          <label for="main-input" style="margin-right: 15px">Добавь задание:
-          </label>
-          <input id="main-input" ng-model="toDoName" class="form-control">
-          <div ng-hide="validation(toDoName)" class="alert alert-danger">Некорректные данные
-          </div>
-          <label for="time-input" style="margin-right: 15px">Сколько времени понадобиться?
-          </label>
-          <input id="time-input" ng-model="timeForToDo" class="form-control" pattern="[0-9]">
-          <div ng-hide="validation(timeForToDo)" class="alert alert-danger">Некорректные
-            данные</div>
-          <button ng-disabled="" class="btn btn-default">Добавить</button>
-        </form>
+<body ng-app="myApp">
+  <div id="wrapper">
+    <main id="view-container">
+      <div ng-view>
       </div>
-    </div>
-
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Описание задания</th>
-          <th>Времени на выполнение</th>
-          <th>Завершил?</th>
-          <th>Состояние</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="todo in data.toDo" ng-class="$odd ? 'bg-light' : 'bg-info'">
-          <td>{{todo.description}}</td>
-          <td>{{todo.time + " hours"}}</td>
-          <td><input type="checkbox" ng-model="todo.state"></td>
-          <td>
-            <span style="{{setStyle(todo.state)}}">
-              {{showText(todo.state)}}
-            </span>
-          </td>
-          <td><button ng-click="delete()" class="btn btn-danger">x</button></td>
-        </tr>
-      </tbody>
-    </table>
+    </main>
   </div>
 
   <script src="./assets//app.js"></script>
-  <script src="./scripts/app.js"></script>
   <script src="//localhost:7777/livereload.js"></script>
 </body>
-
 
 </html>

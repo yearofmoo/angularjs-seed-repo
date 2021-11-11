@@ -1,0 +1,24 @@
+<div class="panel">
+    <div class="input-group">
+        <form ng-submit="$ctrl.onSubmit()" name="form" novalidate>
+            <label for="main-input" style="margin-right: 15px">Добавь задание:
+            </label>
+            <input type="text" id="main-input" ng-model="$ctrl.toDoName" class="form-control" name="taskName" required>
+
+            <div ng-show="form.$submitted || form.taskName.$touched" class="bg-danger text-white" role="alert">
+                <!-- class="alert alert-danger" -->
+                <p ng-show="form.taskName.$error.required">Вы ничего не ввели</p>
+            </div>
+
+            <label for="time-input" style="margin-right: 15px">Сколько времени понадобится? (0-9)
+            </label>
+            <input type="number" id="time-input" ng-model="$ctrl.timeForToDo" class="form-control" pattern="[0-9]"
+                name="taskTime" required>
+            <div ng-show="form.$submitted || form.taskTime.$touched" class="bg-danger text-white">
+                <span ng-show="form.taskTime.$error.required">Введите время для таски!</span>
+                <span ng-show="form.taskTime.$error.pattern">Введите от 0 до 9</span>
+            </div>
+            <input type="submit" class="btn btn-dark" value="Добавить" name="Add" />
+        </form>
+    </div>
+</div>

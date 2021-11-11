@@ -1,0 +1,15 @@
+<div class="filters">
+    <label>Отсортируйте ваше дело:
+        <select ng-model="$ctrl.sort" class="form-select form-select-sm">
+            <option value="-state">Выполненые</option>
+            <option value="state">В процессе
+            </option>
+            <option value="time">по времени </option>
+        </select>
+    </label>
+
+    <label>
+        Поиск по описанию:
+        <input ng-model="$ctrl.query" type="text" class="form-control">
+    </label>
+</div>

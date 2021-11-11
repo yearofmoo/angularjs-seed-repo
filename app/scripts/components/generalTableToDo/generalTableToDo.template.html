@@ -1,0 +1,31 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Описание задания</th>
+            <th>Времени на выполнение</th>
+            <th>Редактировать</th>
+            <th>Завершил?</th>
+            <th>Состояние</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="todo in $ctrl.todos |  filter:{description: $ctrl.query} | orderBy: $ctrl.sort "
+            ng-class="$odd ? 'bg-light' : 'bg-info'" on-update="$ctrl.updateHero(todo, prop, value)">
+            <td>{{todo.description}}</td>
+            <td>{{todo.time + " hours"}}</td>
+            <td>
+                <change-to-do-item field-value="todo.description" field-type="text"
+                    on-update="$ctrl.update(todo.id, 'description',  value)">
+                </change-to-do-item>
+            </td>
+            <td><input type="checkbox" ng-model="todo.state"></td>
+            <td class="p-1">
+                <span ng-style="$ctrl.setStyle(todo.state)">
+                    {{$ctrl.showText(todo.state)}}
+                </span>
+            </td>
+            <td><button ng-click="$ctrl.deleteItem(todo)" class="btn btn-danger">x</button></td>
+        </tr>
+
+    </tbody>
+</table>
